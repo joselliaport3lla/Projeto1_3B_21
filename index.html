@@ -1,4 +1,4 @@
-a<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +17,12 @@ a<!DOCTYPE html>
     </header>
     <main class="graficos-section">
         <section id="graficos-container" class="graficos-container">
-            <!-- crie os gráficos/texto aqui -->
+            <div id="grafico1" class="grafico"></div>
+            <div id="grafico2" class="grafico"></div>
+            <div class="graficos-container__texto">
+                <p>Este é um exemplo de texto explicativo sobre os gráficos exibidos acima. O texto pode fornecer contexto ou insights adicionais sobre os dados.</p>
+                <p><span>Nota:</span> As visualizações são baseadas em dados fictícios para fins de demonstração.</p>
+            </div>
         </section>
     </main>
     <footer>
@@ -26,5 +31,35 @@ a<!DOCTYPE html>
     <script type="module" src="graficos/common.js"></script>
     <script type="module" src="graficos/informacoesGlobais.js"></script>
     <script type="module" src="graficos/quantidadeUsuarios.js"></script>
+    <script>
+        // Exemplo básico de gráfico usando Plotly
+        document.addEventListener('DOMContentLoaded', function () {
+            const data1 = [{
+                x: ['Facebook', 'Instagram', 'Twitter', 'LinkedIn'],
+                y: [150, 200, 100, 50],
+                type: 'bar'
+            }];
+
+            const layout1 = {
+                title: 'Número de Usuários por Rede Social',
+                xaxis: { title: 'Rede Social' },
+                yaxis: { title: 'Número de Usuários' }
+            };
+
+            Plotly.newPlot('grafico1', data1, layout1);
+
+            const data2 = [{
+                labels: ['Facebook', 'Instagram', 'Twitter', 'LinkedIn'],
+                values: [150, 200, 100, 50],
+                type: 'pie'
+            }];
+
+            const layout2 = {
+                title: 'Distribuição de Usuários por Rede Social'
+            };
+
+            Plotly.newPlot('grafico2', data2, layout2);
+        });
+    </script>
 </body>
 </html>
