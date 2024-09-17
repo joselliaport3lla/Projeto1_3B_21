@@ -15,30 +15,12 @@
             <input type="number" id="a" placeholder="Número A" required>
             <input type="number" id="b" placeholder="Número B" required>
             <input type="number" id="c" placeholder="Número C" required>
-            <button type="button" onclick="checkPythagoreanTriple()">Verificar</button>
+            <button type="button" id="verificarBtn">Verificar</button>
         </form>
 
-        <p id="result"></p>
+        <p id="resultado"></p>
     </div>
 
-    <script>
-        function checkPythagoreanTriple() {
-            const a = parseInt(document.getElementById('a').value);
-            const b = parseInt(document.getElementById('b').value);
-            const c = parseInt(document.getElementById('c').value);
-            const resultElement = document.getElementById('result');
-
-            if (isNaN(a) || isNaN(b) || isNaN(c)) {
-                resultElement.innerText = "Por favor, insira três números válidos.";
-                return;
-            }
-
-            if ((a * a) + (b * b) === (c * c)) {
-                resultElement.innerText = `${a}, ${b} e ${c} formam uma terna pitagórica!`;
-            } else {
-                resultElement.innerText = `${a}, ${b} e ${c} não formam uma terna pitagórica.`;
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
