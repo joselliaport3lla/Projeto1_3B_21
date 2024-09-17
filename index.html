@@ -1,65 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redes Sociais</title>
+    <title>Verificador de Ternas Pitagóricas</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
 </head>
 <body>
-    <header>
-        <h1>Relatório das redes sociais</h1>
-        <nav>
-            <a href="index.html">Mundo</a>
-            <a href="#">Minha escola</a>
-        </nav>
-    </header>
-    <main class="graficos-section">
-        <section id="graficos-container" class="graficos-container">
-            <div id="grafico1" class="grafico"></div>
-            <div id="grafico2" class="grafico"></div>
-            <div class="graficos-container__texto">
-                <p>Este é um exemplo de texto explicativo sobre os gráficos exibidos acima. O texto pode fornecer contexto ou insights adicionais sobre os dados.</p>
-                <p><span>Nota:</span> As visualizações são baseadas em dados fictícios para fins de demonstração.</p>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>Desenvolvido por Josellia Portella</p>
-    </footer>
-    <script type="module" src="graficos/common.js"></script>
-    <script type="module" src="graficos/informacoesGlobais.js"></script>
-    <script type="module" src="graficos/quantidadeUsuarios.js"></script>
+    <div class="container">
+        <h1>Verificador de Ternas Pitagóricas</h1>
+        <p>Insira três números para verificar se formam uma terna pitagórica:</p>
+
+        <form id="pythagorean-form">
+            <input type="number" id="a" placeholder="Número A" required>
+            <input type="number" id="b" placeholder="Número B" required>
+            <input type="number" id="c" placeholder="Número C" required>
+            <button type="button" onclick="checkPythagoreanTriple()">Verificar</button>
+        </form>
+
+        <p id="result"></p>
+    </div>
+
     <script>
-        // Exemplo básico de gráfico usando Plotly
-        document.addEventListener('DOMContentLoaded', function () {
-            const data1 = [{
-                x: ['Facebook', 'Instagram', 'Twitter', 'LinkedIn'],
-                y: [150, 200, 100, 50],
-                type: 'bar'
-            }];
+        function checkPythagoreanTriple() {
+            const a = parseInt(document.getElementById('a').value);
+            const b = parseInt(document.getElementById('b').value);
+            const c = parseInt(document.getElementById('c').value);
+            const resultElement = document.getElementById('result');
 
-            const layout1 = {
-                title: 'Número de Usuários por Rede Social',
-                xaxis: { title: 'Rede Social' },
-                yaxis: { title: 'Número de Usuários' }
-            };
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                resultElement.innerText = "Por favor, insira três números válidos.";
+                return;
+            }
 
-            Plotly.newPlot('grafico1', data1, layout1);
-
-            const data2 = [{
-                labels: ['Facebook', 'Instagram', 'Twitter', 'LinkedIn'],
-                values: [150, 200, 100, 50],
-                type: 'pie'
-            }];
-
-            const layout2 = {
-                title: 'Distribuição de Usuários por Rede Social'
-            };
-
-            Plotly.newPlot('grafico2', data2, layout2);
-        });
+            if ((a * a) + (b * b) === (c * c)) {
+                resultElement.innerText = `${a}, ${b} e ${c} formam uma terna pitagórica!`;
+            } else {
+                resultElement.innerText = `${a}, ${b} e ${c} não formam uma terna pitagórica.`;
+            }
+        }
     </script>
 </body>
 </html>
